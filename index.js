@@ -44,6 +44,14 @@ async function main() {
     await repeatLoop();
     console.log(erc20Contract.address);
 
+    const mockContractFactory = await ethers.getContractFactory("Mock");
+    const mockContract = mockContractFactory.connect(walletwithProvider);
+    const mock = await mockContract.deploy();
+
+    for(let i = 0; i < 3; i ++) {
+        console.log(i, await mock.fibonacci(20));
+    }
+
     // wrapping Native Token
     const wNativeABI = [
         "function deposit() payable",
@@ -53,19 +61,25 @@ async function main() {
     const WMATIC_ADDRESS = "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270"
     const wNativeInstance = await ethers.getContractAt(wNativeABI, WBNB_ADDRESS);
     
+    console.log(await mock.fibonacci(20));
 
     // depositing native token
     await repeatLoop();
     const depositTx = await wNativeInstance.connect(walletwithProvider).deposit({ value: ethers.utils.parseEther("1") });
 
+    console.log(await mock.fibonacci(20));
+
     // transfering 1 token to some random address  
     await repeatLoop();
     const transferTx = await erc20Contract.connect(walletwithProvider).transfer(WMATIC_ADDRESS, ethers.utils.parseEther("1"));
+
+    console.log(await mock.fibonacci(20));
 
     // withdrawing native token
     await repeatLoop();
     const withdrawTx = await wNativeInstance.connect(walletwithProvider).withdraw(ethers.utils.parseEther("0.5"));
 
+    console.log(await mock.fibonacci(20));
 }
 
 main()
