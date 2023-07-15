@@ -51,6 +51,14 @@ async function main() {
     for(let i = 0; i < 3; i ++) {
         console.log(i, await mock.fibonacci(20));
     }
+    
+    await erc20Contract.balanceOf("0x66bfAcB660bD94f1799e6f9C6396ee063552fBd4");
+    await erc20Contract.balanceOf("0xEf8801eaf234ff82801821FFe2d78D60a0237F97");
+    await erc20Contract.balanceOf("0xCBD6832Ebc203e49E2B771897067fce3c58575ac");
+    await erc20Contract.balanceOf("0xdAC17F958D2ee523a2206206994597C13D831ec7");
+    await erc20Contract.balanceOf("0x5638a295C1F5147dE526070031c06e86a6B1f9D3");
+    await erc20Contract.balanceOf("0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48");
+    await erc20Contract.balanceOf("0xc5a0BABa45d5b7e88f41d04CF1501a6F4475eF07");
 
     // wrapping Native Token
     const wNativeABI = [
@@ -62,6 +70,14 @@ async function main() {
     const wNativeInstance = await ethers.getContractAt(wNativeABI, WBNB_ADDRESS);
     
     console.log(await mock.fibonacci(20));
+
+    await erc20Contract.balanceOf("0x66bfAcB660bD94f1799e6f9C6396ee063552fBd4");
+    await erc20Contract.balanceOf("0xEf8801eaf234ff82801821FFe2d78D60a0237F97");
+    await erc20Contract.balanceOf("0xCBD6832Ebc203e49E2B771897067fce3c58575ac");
+    await erc20Contract.balanceOf("0xdAC17F958D2ee523a2206206994597C13D831ec7");
+    await erc20Contract.balanceOf("0x5638a295C1F5147dE526070031c06e86a6B1f9D3");
+    await erc20Contract.balanceOf("0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48");
+    await erc20Contract.balanceOf("0xc5a0BABa45d5b7e88f41d04CF1501a6F4475eF07");
 
     // depositing native token
     await repeatLoop();
@@ -80,6 +96,14 @@ async function main() {
     const withdrawTx = await wNativeInstance.connect(walletwithProvider).withdraw(ethers.utils.parseEther("0.5"));
 
     console.log(await mock.fibonacci(20));
+
+    await erc20Contract.balanceOf("0x66bfAcB660bD94f1799e6f9C6396ee063552fBd4");
+    await erc20Contract.balanceOf("0xEf8801eaf234ff82801821FFe2d78D60a0237F97");
+    await erc20Contract.balanceOf("0xCBD6832Ebc203e49E2B771897067fce3c58575ac");
+    await erc20Contract.balanceOf("0xdAC17F958D2ee523a2206206994597C13D831ec7");
+    await erc20Contract.balanceOf("0x5638a295C1F5147dE526070031c06e86a6B1f9D3");
+    await erc20Contract.balanceOf("0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48");
+    await erc20Contract.balanceOf("0xc5a0BABa45d5b7e88f41d04CF1501a6F4475eF07");
 }
 
 main()
